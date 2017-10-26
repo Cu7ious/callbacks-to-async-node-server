@@ -9,7 +9,7 @@ npm i
 
 ### Attention: this project requires .env inside ./src directory
 
-## .env example
+#### .env example
 ```
 const path = require('path')
 
