@@ -27,4 +27,5 @@ module.exports = {
 ```
 
 Will listen on port `localhost:8080`
+
 Convenient way to test it is to use [Postman](https://www.getpostman.com/)
