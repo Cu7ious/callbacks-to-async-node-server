@@ -2,12 +2,21 @@ const fs = require('fs')
 const mime = require('mime')
 
 module.exports = (filePath, res) => {
-  fs.readFile(filePath, (err, content) => {
-    if (err) throw err
+  const fileStream = fs.createReadStream(filePath)
 
-    const mimeType = mime.getType(filePath)
-
-    res.setHeader('Content-Type', `${mimeType}; charset=utf-8`)
-    res.end(content)
+  fileStream.on('open', () => {
+    console.log('Start reading file as stream')
   })
+
+  fileStream.on('readable', () => {
+    const data = fileStream.read()
+    if (data) {
+      console.log(data.toString())
+    }
+  })
+
+  fileStream.on('end', () => {
+    console.log('File stream ended')
+  })
+
 }
